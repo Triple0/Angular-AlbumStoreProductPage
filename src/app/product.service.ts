@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Http, Response } from '@angular/http';
 import { StringifyOptions } from 'querystring';
-import {map } from 'rxjs/add/operator/'
+import 'rxjs/add/operator/map';
+import { AnonymousSubject } from 'rxjs/Subject';
 
 @Injectable()
 export class ProductService {
@@ -10,13 +11,12 @@ export class ProductService {
   private _albumUrl = '../assests/album.json';
 
   getAlbum(id: number) {
-    let result: any;
-    return this._http.get(id)
-    .map((response: Response) => result = <any>response.json());
+    return this._http.get(this._albumUrl).map((response) => {return response.json()});
+
   }
 
   get(_albumUrl: string) {
-    return this._albumUrl;
+    return _albumUrl;
   }
 
   constructor(private _http: Http) { }
