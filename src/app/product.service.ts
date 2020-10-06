@@ -8,18 +8,12 @@ import { AnonymousSubject } from 'rxjs/Subject';
 @Injectable()
 export class ProductService {
 
-  private _albumUrl = '../assests/album.json';
-
-  getAlbum(id: number) {
-    return this._http.get(this._albumUrl).map((response) => {return response.json()});
-
-  }
-
-  get(_albumUrl: string) {
-    return _albumUrl;
-  }
+  private _albumUrl = '../assets/album.json';
 
   constructor(private _http: Http) { }
 
+  getAlbum(id: number) {
+    return this._http.get(this._albumUrl).map((response) => {return response.json()});
+  }
 
 }
